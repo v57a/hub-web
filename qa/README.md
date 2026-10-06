@@ -9,12 +9,13 @@ git clone https://github.com/v57a/hub-web.git
 cd hub-web
 bun install
 bun run build
-bun run preview --port 4173        # then run the suite below against it
-```
+bun run preview --port 4173        # in a second terminal, then run the suite
 
-One suite exists in this repository: `tests/`, run with `bun run test`
-(Playwright, 45 tests). `bun run test:desktop` and `bun run test:mobile` run one
-viewport each, `bun run report` opens the HTML report.
+bun run test                       # Playwright, 45 tests: 32 pass, 13 fail on purpose
+bun run test:desktop               # one viewport only
+bun run test:mobile
+bun run report                     # open the HTML report
+```
 
 `bun test` finds nothing — the six bun unit tests that came from upstream were
 removed (see the commit history): they were inherited unchanged and one of them
@@ -50,5 +51,5 @@ Screenshots: `evidence/`.
 ## Notes on method
 
 - BUG-03 was confirmed on a clean clone, then re-checked on a working copy that has `static/` present: all 39 images load and the console is clean. The defect is the `.gitignore` entry, not the code.
-- BUG-09 was first suspected from the source mapping and then verified by rendering every SVG large and comparing it with its label. The site looks right; only the file names lie. `test/home-content.test.ts` asserts the wrong mapping, so the unit test protects the defect.
+- BUG-09 was first suspected from the source mapping and then verified by rendering every SVG large and comparing it with its label. The site looks right; only the file names lie. `tests/home.e2e.ts` now pins the current behaviour (right picture, wrong file name) so a rename cannot silently break the hero.
 - One suspected bug was rejected: the "Windows" chip in Get started switches the instructions correctly when clicked precisely. It did not reproduce, so it is not in the report.
