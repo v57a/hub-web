@@ -9,14 +9,16 @@ git clone https://github.com/v57a/hub-web.git
 cd hub-web
 bun install
 bun run build
-bun run preview --port 4173        # then run the suites below against it
+bun run preview --port 4173        # then run the suite below against it
 ```
 
-Two suites exist in this repository:
+One suite exists in this repository: `tests/`, run with `bun run test`
+(Playwright, 45 tests). `bun run test:desktop` and `bun run test:mobile` run one
+viewport each, `bun run report` opens the HTML report.
 
-- `bun test` — 8 unit tests over the content modules and the layout source (kept from upstream).
-- `bunx playwright test` — 45 end-to-end tests in `tests/`, desktop (1440x900) and mobile (390x844).
-  Runs 32 green and 13 red on purpose: the red ones are the open bugs, asserted so a fix turns them green.
+`bun test` finds nothing — the six bun unit tests that came from upstream were
+removed (see the commit history): they were inherited unchanged and one of them
+failed on a clean clone because it read files from the gitignored `static/`.
 
 ## Result
 
@@ -25,7 +27,7 @@ Two suites exist in this repository:
 | Checklist | 37 checks — 19 pass, 17 fail, 1 needs a product decision |
 | Test cases | 6 written |
 | Bug reports | 9 (3 major, 4 average, 2 minor) |
-| Automated, passing | 32 Playwright + 7 bun unit tests |
+| Automated, passing | 32 Playwright tests |
 | Automated, failing on purpose | 13 Playwright tests, one per open bug |
 
 ## Bugs

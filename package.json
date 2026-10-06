@@ -6,11 +6,11 @@
     "dev": "vite dev",
     "build": "svelte-kit sync && vite build",
     "preview": "vite preview",
-    "test": "bun test",
+    "test": "playwright test",
     "screenshot": "bun run scripts/capture-screenshots.ts",
-    "test:e2e": "playwright test",
-    "test:all": "bun test && playwright test",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "test:desktop": "playwright test --project=desktop",
+    "test:mobile": "playwright test --project=mobile"
   },
   "devDependencies": {
     "@playwright/test": "1.59.1",
