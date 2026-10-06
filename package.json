@@ -7,9 +7,13 @@
     "build": "svelte-kit sync && vite build",
     "preview": "vite preview",
     "test": "bun test",
-    "screenshot": "bun run scripts/capture-screenshots.ts"
+    "screenshot": "bun run scripts/capture-screenshots.ts",
+    "test:e2e": "playwright test",
+    "test:all": "bun test && playwright test",
+    "report": "playwright show-report"
   },
   "devDependencies": {
+    "@playwright/test": "1.59.1",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.57.1",
     "@sveltejs/vite-plugin-svelte": "7.0.0",

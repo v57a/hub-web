@@ -2,6 +2,9 @@
 artifacts/
 node_modules/
 static/
-tests/
 .DS_Store
 bun.lock
+!tests/
+!tests/**
+playwright-report/
+test-results/
